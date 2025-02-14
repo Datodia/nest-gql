@@ -12,8 +12,9 @@ export class PostsService{
     
     ){}
 
-    getAllPosts(){
-        return this.postModel.find().populate({path: 'user'})
+    async getAllPosts(){
+        const posts = await this.postModel.find().populate({path: 'user'})
+        return posts
     }
 
 }

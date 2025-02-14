@@ -8,7 +8,7 @@ export class UserService{
     constructor(@InjectModel('user') private userModel: Model<User>){}
 
     getAllUsers(){
-        return this.userModel.find()
+        return this.userModel.find().populate('posts')
     }
 
     async getUserById(id){
@@ -18,4 +18,7 @@ export class UserService{
         return user
     }
 
+    createUser(createUserDto){
+        return this.userModel.create(createUserDto)
+    }
 }
